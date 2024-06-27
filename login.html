@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - My Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.sstatic.net/jGlzr.png'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            color: #ffffff; /* White text color */
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background for header */
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ffffff; /* White link color */
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for buttons */
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: rgba(0, 0, 0, 0.9); /* Darken button on hover */
+        }
+
+        .login-form {
+            max-width: 400px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for form */
+            padding: 20px;
+            border-radius: 10px;
+            margin: 50px auto;
+        }
+
+        .login-form h2 {
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: calc(100% - 12px);
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #66afe9; /* Blue focus border */
+        }
+
+        .input-group button {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            color: #ffffff;
+            background-color: #4CAF50; /* Green button */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .input-group button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Login to My Website</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="register.html">Register</a>
+        <a href="#">About Us</a>
+    </nav>
+
+    <div class="login-form">
+        <h2>Login</h2>
+        <form id="login-form">
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+
+    <script>
+        // Initialize Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyBA_gGITL3vOX_wymV8m3c7h_2kYxUEL0A",
+  authDomain: "email-5e336.firebaseapp.com",
+  projectId: "email-5e336",
+  storageBucket: "email-5e336.appspot.com",
+  messagingSenderId: "561655323170",
+  appId: "1:561655323170:web:42fcf886c34f2d5a16487b",
+  measurementId: "G-J92WNBY5RL"
+};
+
+        firebase.initializeApp(firebaseConfig);
+
+        const loginForm = document.getElementById('login-form');
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = loginForm['email'].value;
+            const password = loginForm['password'].value;
+
+            // Sign in with email and password
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
+                    console.log('User logged in:', user);
+                    // Redirect to main.html upon successful login
+                    window.location.href = 'main.html';
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error('Login error:', errorMessage);
+                    // Display error to user (you can customize this part)
+                    alert(errorMessage);
+                });
+        });
+    </script>
+
+</body>
+</html>

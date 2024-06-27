@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.sstatic.net/jGlzr.png'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            color: #ffffff; /* White text color */
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background for header */
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ffffff; /* White link color */
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for buttons */
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: rgba(0, 0, 0, 0.9); /* Darken button on hover */
+        }
+
+        .welcome-message {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 50px;
+            animation: pulse 2s infinite; /* Animation for welcome message */
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Website</h1>
+    </header>
+
+    <nav>
+        <a href="register.html">Register</a>
+        <a href="login.html">Sign In</a>
+        <a href="#">About Us</a>
+    </nav>
+
+    <div class="welcome-message">
+        <p>This is a random welcome message. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+
+    <!-- You can add more content here -->
+
+</body>
+</html>
